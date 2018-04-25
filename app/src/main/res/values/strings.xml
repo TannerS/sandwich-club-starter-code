@@ -13,6 +13,15 @@
     <!-- Error messages-->
     <string name="detail_error_message">Sandwich data not available</string>
 
+    <!-- key fields for sandwich json objects -->
+    <string name="sandwich_json_name_root">name</string>
+    <string name="sandwich_json_name_main">mainName</string>
+    <string name="sandwich_json_name_alternatives">alsoKnownAs</string>
+    <string name="sandwich_json_place_of_origin">placeOfOrigin</string>
+    <string name="sandwich_json_description">description</string>
+    <string name="sandwich_json_image">image</string>
+    <string name="sandwich_json_ingredients">ingredients</string>
+
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>
         <item>Bosna</item>
