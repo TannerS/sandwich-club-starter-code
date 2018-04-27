@@ -2,16 +2,14 @@ package com.udacity.sandwichclub;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
-
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
@@ -66,31 +64,56 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     *      UI element populating
+     */
     private void populateUI() {
+        // variables to hold references to view items
+        TextView mName = (TextView) findViewById(R.id.name_tv);
+        TextView mNameAlternative = findViewById(R.id.also_known_tv);
+        TextView mIngredients = (TextView) findViewById(R.id.ingredients_tv);
+        TextView mOrigin = (TextView) findViewById(R.id.origin_tv);
+        TextView mDescription = (TextView) findViewById(R.id.description_tv);
+        // list item variables
+        List<String> mNameAlternativeList = sandwich.getAlsoKnownAs();
+        List<String> mIngredientsList = sandwich.getIngredients();
 
-//        private String mainName;
-//        private List<String> alsoKnownAs = null;
-//        private String placeOfOrigin;
-//        private String description;
-//        private String image;
-//        private List<String> ingredients = null;
+        // check for alternative names, it none, dont display
+        if (mNameAlternativeList.size() != 0) {
+            mNameAlternative.setText(listToString(mNameAlternativeList));
+        } else {
+            mNameAlternative.setVisibility(View.GONE);
+        }
 
-//
-//        TextView mName = (TextView) findViewById(R.id.name_tv);
-//        TextView mNameAlt = (TextView) findViewById(R.id.also_known_tv);
-//        TextView mIngredients = (TextView) findViewById(R.id.ingredients_tv);
-//        TextView mOrigin= (TextView) findViewById(R.id.origin_tv);
-//        TextView mDescription = (TextView) findViewById(R.id.description_tv);
+        // check for ingredients, it none, dont display
+        if (mIngredientsList.size() != 0) {
+            mIngredients.setText(listToString(mIngredientsList));
+        } else {
+            (findViewById(R.id.ingredients_container)).setVisibility(View.GONE);
+        }
 
+        // check for place of origin, it none, dont display
+        if (sandwich.getPlaceOfOrigin() != null && sandwich.getPlaceOfOrigin().length() > 0) {
+            mOrigin.setText(sandwich.getPlaceOfOrigin());
+        } else {
+            (findViewById(R.id.origin_container)).setVisibility(View.GONE);
+        }
 
-        ((TextView) findViewById(R.id.name_tv)).setText(sandwich.getMainName());
-        ((TextView) findViewById(R.id.also_known_tv)).setText(listToString(sandwich.getAlsoKnownAs()));
-        ((TextView) findViewById(R.id.ingredients_tv)).setText(listToString(sandwich.getIngredients()));
-        ((TextView) findViewById(R.id.origin_tv)).setText(sandwich.getPlaceOfOrigin());
-        ((TextView) findViewById(R.id.description_tv)).setText(sandwich.getDescription());
-
+        // check for description, it none, dont display
+        if (sandwich.getDescription() != null && sandwich.getDescription().length() > 0) {
+            mDescription.setText(sandwich.getDescription());
+        } else {
+            (findViewById(R.id.desc_container)).setVisibility(View.GONE);
+        }
+        // set name, assumed never to be empty
+        mName.setText(sandwich.getMainName());
     }
 
+    /**
+     * Turn list of strings into comma separated string
+     * @param   items     list of strings
+     * @return          comma separated string
+     */
     private String listToString(List<String> items)
     {
         StringBuilder mBuilder = new StringBuilder();

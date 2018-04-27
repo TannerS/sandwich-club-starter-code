@@ -6,37 +6,71 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context="com.udacity.sandwichclub.DetailActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="25dp">
+        card_view:cardCornerRadius="4dp"
+        android:elevation="10dp"
+        android:layout_marginTop="@dimen/main_cardview_margin"
+        android:layout_marginRight="@dimen/main_cardview_margin"
+        android:layout_marginLeft="@dimen/main_cardview_margin">
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/activity_details_image_container"
-            card_view:cardCornerRadius="4dp"
-            android:elevation="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_details_image_container">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:gravity="bottom">
 
-                <ImageView
-                    android:id="@+id/image_iv"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_details_image"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/sandwich_picture_content_description"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+                    android:background="@color/colorPrimary">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_details_image_half"
+                        android:orientation="vertical"
+                        android:layout_gravity="top"
+                        android:gravity="top"
+                        android:background="@color/colorPrimary"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_details_image_half"
+                        android:orientation="vertical"
+                        android:layout_gravity="bottom"
+                        android:gravity="bottom"
+                        android:background="@color/colorPrimaryDark"/>
+
+                    <!--
+                    SOURCE: https://github.com/hdodenhof/CircleImageView
+                    -->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/image_iv"
+                        android:layout_height="@dimen/activity_details_image"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        app:civ_border_width="@dimen/circle_imageview_border_width"
+                        android:padding="@dimen/circle_imageview_padding_all"
+                        app:civ_border_color="@color/colorPrimary"
+                        android:adjustViewBounds="false"
+                        android:contentDescription="@string/sandwich_picture_content_description"
+                        android:src="@mipmap/ic_launcher"/>
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_gravity="bottom"
                     android:gravity="bottom">
@@ -48,9 +82,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:textColor="@color/green_100"
                         android:gravity="bottom"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/details_text_main_header_size"
+                        android:textColor="@color/grayDark"
                         android:text="Name place holder"/>
 
                     <TextView
@@ -60,39 +94,33 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:textColor="@color/green_100"
                         android:gravity="bottom"
-                        android:textSize="15sp"
-                        android:text="Known as place holder"/>
+                        android:textSize="@dimen/details_text_main_alt_size"
+                    android:text="Known as place holder"/>
 
                 </LinearLayout>
 
-
-            </FrameLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            card_view:cardCornerRadius="4dp"
-            android:elevation="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:paddingTop="@dimen/details_text_container_first_padding_top"
+                android:paddingStart="@dimen/details_text_container_first_padding_left"
+                android:paddingEnd="@dimen/details_text_container_first_padding_right"
+                android:paddingBottom="@dimen/details_text_container_first_padding_bottom"
+                android:id="@+id/ingredients_container"
+                android:paddingLeft="@dimen/details_text_container_first_padding_left"
+                android:paddingRight="@dimen/details_text_container_first_padding_right">
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/grayDark"
                     android:text="@string/detail_ingredients_label"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="@dimen/details_text_header_size"/>
 
                 <include
                     layout="@layout/divider"
@@ -101,38 +129,31 @@
 
 
                 <TextView
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_gravity="start"
+                    android:gravity="start"
                     android:text="Ingredients Place Holder"
                     android:id="@+id/ingredients_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/details_text_body_indent"
+                    android:paddingEnd="@dimen/details_text_body_indent" />
 
             </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            card_view:cardCornerRadius="4dp"
-            android:elevation="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:padding="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="@dimen/details_text_container_padding"
+                android:id="@+id/origin_container">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/grayDark"
                     android:text="@string/detail_place_of_origin_label"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="@dimen/details_text_header_size"/>
 
                 <include
                     layout="@layout/divider"
@@ -140,40 +161,31 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_gravity="start"
+                    android:gravity="start"
                     android:text="Origin Place Holder"
                     android:id="@+id/origin_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/details_text_body_indent"
+                    android:paddingEnd="@dimen/details_text_body_indent" />
 
             </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            card_view:cardCornerRadius="4dp"
-            android:elevation="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:padding="5dp"
-            android:layout_marginBottom="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp"
-                android:paddingBottom="5dp">
+                android:padding="@dimen/details_text_container_padding"
+                android:id="@+id/desc_container">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/grayDark"
                     android:text="@string/detail_description_label"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="@dimen/details_text_header_size"/>
 
                 <include
                     layout="@layout/divider"
@@ -181,18 +193,20 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_gravity="start"
+                    android:gravity="start"
                     android:text="Desc Place Holder"
                     android:id="@+id/description_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/details_text_body_indent"
+                    android:paddingEnd="@dimen/details_text_body_indent" />
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </LinearLayout>
 
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </ScrollView>
 
