@@ -51,7 +51,9 @@
                         android:background="@color/colorPrimaryDark"/>
 
                     <!--
-                    SOURCE: https://github.com/hdodenhof/CircleImageView
+                    All credit for this goes too
+
+                    https://github.com/hdodenhof/CircleImageView
                     -->
                     <de.hdodenhof.circleimageview.CircleImageView
                         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -84,8 +86,7 @@
                         android:textStyle="bold"
                         android:gravity="bottom"
                         android:textSize="@dimen/details_text_main_header_size"
-                        android:textColor="@color/grayDark"
-                        android:text="Name place holder"/>
+                        android:textColor="@color/grayDark" />
 
                     <TextView
                         android:id="@+id/also_known_tv"
@@ -95,8 +96,7 @@
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:gravity="bottom"
-                        android:textSize="@dimen/details_text_main_alt_size"
-                    android:text="Known as place holder"/>
+                        android:textSize="@dimen/details_text_main_alt_size" />
 
                 </LinearLayout>
 
@@ -131,7 +131,6 @@
                 <TextView
                     android:layout_gravity="start"
                     android:gravity="start"
-                    android:text="Ingredients Place Holder"
                     android:id="@+id/ingredients_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -163,7 +162,6 @@
                 <TextView
                     android:layout_gravity="start"
                     android:gravity="start"
-                    android:text="Origin Place Holder"
                     android:id="@+id/origin_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -195,7 +193,6 @@
                 <TextView
                     android:layout_gravity="start"
                     android:gravity="start"
-                    android:text="Desc Place Holder"
                     android:id="@+id/description_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

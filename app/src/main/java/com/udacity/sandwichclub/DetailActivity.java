@@ -111,8 +111,8 @@ public class DetailActivity extends AppCompatActivity {
 
     /**
      * Turn list of strings into comma separated string
-     * @param   items     list of strings
-     * @return          comma separated string
+     * @param   items       list of strings
+     * @return              comma separated string
      */
     private String listToString(List<String> items)
     {
