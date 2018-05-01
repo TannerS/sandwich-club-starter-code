@@ -1,209 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="com.udacity.sandwichclub.DetailActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v7.widget.CardView
+    <data>
+        <import type="com.udacity.sandwichclub.utils.SandwichUtil"/>
+        <import type="android.view.View"/>
+
+        <variable
+            name="sandwich"
+            type="com.udacity.sandwichclub.model.Sandwich" />
+    </data>
+
+    <ScrollView
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
-        android:elevation="10dp"
-        android:layout_marginTop="@dimen/main_cardview_margin"
-        android:layout_marginRight="@dimen/main_cardview_margin"
-        android:layout_marginLeft="@dimen/main_cardview_margin">
+        android:layout_height="match_parent"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        tools:context="com.udacity.sandwichclub.DetailActivity">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            card_view:cardCornerRadius="4dp"
+            android:elevation="10dp"
+            android:layout_marginTop="@dimen/main_cardview_margin"
+            android:layout_marginRight="@dimen/main_cardview_margin"
+            android:layout_marginLeft="@dimen/main_cardview_margin">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_gravity="bottom"
-                android:gravity="bottom">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_details_image"
-                    android:layout_gravity="bottom"
-                    android:gravity="bottom"
-                    android:background="@color/colorPrimary">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/activity_details_image_half"
-                        android:orientation="vertical"
-                        android:layout_gravity="top"
-                        android:gravity="top"
-                        android:background="@color/colorPrimary"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/activity_details_image_half"
-                        android:orientation="vertical"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@color/colorPrimaryDark"/>
-
-                    <!--
-                    All credit for this goes too
-
-                    https://github.com/hdodenhof/CircleImageView
-                    -->
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/image_iv"
-                        android:layout_height="@dimen/activity_details_image"
-                        android:scaleType="centerCrop"
-                        android:layout_width="match_parent"
-                        app:civ_border_width="@dimen/circle_imageview_border_width"
-                        android:padding="@dimen/circle_imageview_padding_all"
-                        app:civ_border_color="@color/colorPrimary"
-                        android:adjustViewBounds="false"
-                        android:contentDescription="@string/sandwich_picture_content_description"
-                        android:src="@mipmap/ic_launcher"/>
-
-                </FrameLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_gravity="bottom"
                     android:gravity="bottom">
 
-                    <TextView
-                        android:id="@+id/name_tv"
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_details_image"
                         android:layout_gravity="bottom"
-                        android:textAlignment="center"
+                        android:gravity="bottom"
+                        android:background="@color/colorPrimary">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/activity_details_image_half"
+                            android:orientation="vertical"
+                            android:layout_gravity="top"
+                            android:gravity="top"
+                            android:background="@color/colorPrimary"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/activity_details_image_half"
+                            android:orientation="vertical"
+                            android:layout_gravity="bottom"
+                            android:gravity="bottom"
+                            android:background="@color/colorPrimaryDark"/>
+
+                        <!--
+                        All credit for this goes too
+
+                        https://github.com/hdodenhof/CircleImageView
+                        -->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/image_iv"
+                            android:layout_height="@dimen/activity_details_image"
+                            android:scaleType="centerCrop"
+                            android:layout_width="match_parent"
+                            app:civ_border_width="@dimen/circle_imageview_border_width"
+                            android:padding="@dimen/circle_imageview_padding_all"
+                            app:civ_border_color="@color/colorPrimary"
+                            android:adjustViewBounds="false"
+                            android:contentDescription="@string/sandwich_picture_content_description"
+                            android:src="@mipmap/ic_launcher"/>
+
+                    </FrameLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:gravity="bottom"
-                        android:textSize="@dimen/details_text_main_header_size"
-                        android:textColor="@color/grayDark" />
+                        android:orientation="vertical"
+                        android:layout_gravity="bottom"
+                        android:gravity="bottom">
+
+                        <TextView
+                            android:id="@+id/name_tv"
+                            android:layout_gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:gravity="bottom"
+                            android:textSize="@dimen/details_text_main_header_size"
+                            android:textColor="@color/grayDark"
+                            android:text="@{sandwich.mainName}"/>
+
+                        <TextView
+                            android:id="@+id/also_known_tv"
+                            android:layout_gravity="bottom"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:gravity="bottom"
+                            android:textSize="@dimen/details_text_main_alt_size"
+                            android:text="@{SandwichUtil.listToString(sandwich.alsoKnownAs)}"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/details_text_container_first_padding_top"
+                    android:paddingStart="@dimen/details_text_container_first_padding_left"
+                    android:paddingEnd="@dimen/details_text_container_first_padding_right"
+                    android:paddingBottom="@dimen/details_text_container_first_padding_bottom"
+                    android:id="@+id/ingredients_container"
+                    android:paddingLeft="@dimen/details_text_container_first_padding_left"
+                    android:paddingRight="@dimen/details_text_container_first_padding_right"
+                    android:visibility="@{sandwich.ingredients.isEmpty() ? View.GONE : View.VISIBLE}">
 
                     <TextView
-                        android:id="@+id/also_known_tv"
-                        android:layout_gravity="bottom"
-                        android:textAlignment="center"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/grayDark"
+                        android:text="@string/detail_ingredients_label"
                         android:textStyle="bold"
-                        android:gravity="bottom"
-                        android:textSize="@dimen/details_text_main_alt_size" />
+                        android:textSize="@dimen/details_text_header_size"/>
+
+                    <include
+                        layout="@layout/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:id="@+id/ingredients_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/details_text_body_indent"
+                        android:paddingEnd="@dimen/details_text_body_indent"
+                        android:text="@{SandwichUtil.listToString(sandwich.ingredients)}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/details_text_container_padding"
+                    android:id="@+id/origin_container"
+                    android:visibility="@{sandwich.placeOfOrigin == null || sandwich.placeOfOrigin.length() == 0 ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grayDark"
+                        android:text="@string/detail_place_of_origin_label"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/details_text_header_size"/>
+
+                    <include
+                        layout="@layout/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:id="@+id/origin_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/details_text_body_indent"
+                        android:paddingEnd="@dimen/details_text_body_indent"
+                        android:text="@{sandwich.placeOfOrigin}"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/details_text_container_padding"
+                    android:id="@+id/desc_container"
+                    android:visibility="@{sandwich.description == null || sandwich.description.length() == 0 ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grayDark"
+                        android:text="@string/detail_description_label"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/details_text_header_size"/>
+
+                    <include
+                        layout="@layout/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:id="@+id/description_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/details_text_body_indent"
+                        android:paddingEnd="@dimen/details_text_body_indent"
+                        android:text="@{sandwich.description}"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/details_text_container_first_padding_top"
-                android:paddingStart="@dimen/details_text_container_first_padding_left"
-                android:paddingEnd="@dimen/details_text_container_first_padding_right"
-                android:paddingBottom="@dimen/details_text_container_first_padding_bottom"
-                android:id="@+id/ingredients_container"
-                android:paddingLeft="@dimen/details_text_container_first_padding_left"
-                android:paddingRight="@dimen/details_text_container_first_padding_right">
+        </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grayDark"
-                    android:text="@string/detail_ingredients_label"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/details_text_header_size"/>
-
-                <include
-                    layout="@layout/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-
-                <TextView
-                    android:layout_gravity="start"
-                    android:gravity="start"
-                    android:id="@+id/ingredients_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/details_text_body_indent"
-                    android:paddingEnd="@dimen/details_text_body_indent" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/details_text_container_padding"
-                android:id="@+id/origin_container">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grayDark"
-                    android:text="@string/detail_place_of_origin_label"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/details_text_header_size"/>
-
-                <include
-                    layout="@layout/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_gravity="start"
-                    android:gravity="start"
-                    android:id="@+id/origin_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/details_text_body_indent"
-                    android:paddingEnd="@dimen/details_text_body_indent" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/details_text_container_padding"
-                android:id="@+id/desc_container">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grayDark"
-                    android:text="@string/detail_description_label"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/details_text_header_size"/>
-
-                <include
-                    layout="@layout/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_gravity="start"
-                    android:gravity="start"
-                    android:id="@+id/description_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/details_text_body_indent"
-                    android:paddingEnd="@dimen/details_text_body_indent" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-
-</ScrollView>
+    </ScrollView>
+</layout>
 
